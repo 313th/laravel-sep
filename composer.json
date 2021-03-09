@@ -1,6 +1,6 @@
 {
-    "name": "sahifedp/profile",
-    "description": "A profile manager for \"SahifeDP Laravel\" platform",
+    "name": "sahifedp/laravel-sep",
+    "description": "SEP(Saman Kish) payment method for Laravel framework",
     "require": {
         "sahifedp/sdp-menu-manager": "dev-master"
     },
@@ -14,21 +14,17 @@
     "extra": {
         "laravel": {
             "providers": [
-                "sahifedp\\Profile\\ProfileServiceProvider"
+                "sahifedp\\Sep\\SepServiceProvider"
             ],
             "aliases": {
-
+                "SEP": "sahifedp\\Sep\\Sep"
             }
         }
     },
     "autoload": {
         "psr-4": {
-            "sahifedp\\Profile\\": "src/"
+            "sahifedp\\Sep\\": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "scripts": {
-        "post-package-install": "php artisan profile:register",
-        "post-package-update": "php artisan profile:register"
-    }
+    "minimum-stability": "dev"
 }
