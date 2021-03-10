@@ -2,7 +2,8 @@
     "name": "sahifedp/laravel-sep",
     "description": "SEP(Saman Kish) payment method for Laravel framework",
     "require": {
-        "sahifedp/sdp-menu-manager": "dev-master"
+        "sahifedp/sdp-menu-manager": "dev-master",
+        "ext-soap": "*"
     },
     "license": "MIT",
     "authors": [

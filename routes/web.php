@@ -9,7 +9,7 @@ use Facuz\Theme\Facades\Theme;
 */
 Route::prefix('sep')
     ->name('sep.')
-    ->middleware(['web','auth', 'theme:' . env('APP_THEME').',dashboard'])
+    ->middleware(['web', 'theme:' . env('APP_THEME').',layout'])
     ->group(function () {
         /*--Start Payment Routes--*/
         Route::get('/pay',[\sahifedp\Sep\Controllers\PayController::class,'create'])
@@ -18,6 +18,11 @@ Route::prefix('sep')
             ->name('pay.store');
         Route::get('/pay/submit/{token}',[\sahifedp\Sep\Controllers\PayController::class,'submit'])
             ->name('pay.submit');
+        /*--Callback Routes--*/
+        Route::post('/callback/{id}',[\sahifedp\Sep\Controllers\CallbackController::class,'update'])
+            ->name('callback');
+        Route::get('/result/{id}',[\sahifedp\Sep\Controllers\CallbackController::class,'result'])
+            ->name('result');
     });
 /*
 |--------------------------------------------------------------------------
