@@ -8,7 +8,7 @@ return[
     'password' => '5608800',
     'MID' => '21302778',
 //    'SEPPayerId' => '0',
-    'WageType' => 'Percent', //None,Percent,Amount
+    'WageType' => 'None', //None,Percent,Amount
     'WageValue' => 0.5,
 //    'SEPWageValue' => 50000,
     'CalcCommissionType' => '-', // +: Add to final amount , -: Final amount leaves untouched and wage subtracts from amount

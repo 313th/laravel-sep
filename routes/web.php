@@ -23,6 +23,11 @@ Route::prefix('sep')
             ->name('callback');
         Route::get('/result/{id}',[\sahifedp\Sep\Controllers\CallbackController::class,'result'])
             ->name('result');
+        /*--Generator Routes--*/
+        Route::post('/generate',[\sahifedp\Sep\Controllers\GeneratorController::class,'store'])
+            ->name('generator.store');
+        Route::get('/generate',[\sahifedp\Sep\Controllers\GeneratorController::class,'create'])
+            ->name('generator.create');
     });
 /*
 |--------------------------------------------------------------------------

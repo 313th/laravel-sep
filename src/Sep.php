@@ -67,4 +67,23 @@ class Sep {
         $response = $client->reverseTransaction($refNum,config('sep.config.terminalId'),config('sep.config.terminalId'),config('sep.config.password'));
         return $response;
     }
+
+    public static function shorten($url,$title="لینک پرداخت"){
+        $data = json_encode([
+            "title" => $title,
+            "url" => $url,
+        ]);
+
+        $ch = curl_init('https://yun.ir/api/v1/urls');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'X-API-Key: 395:ltuwp7knk740k44gc404gkckc0ckkks',
+            'Content-Length: ' . strlen($data)
+        ]);
+        $result = curl_exec($ch);
+        return json_decode($result);
+    }
 }

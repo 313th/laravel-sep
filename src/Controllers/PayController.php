@@ -17,19 +17,21 @@ class PayController extends Controller {
      */
     public function create(Request $request) {
         Theme::asset()->writeScript('add-commas','
-        $("#amount").keyup(function () {
-//            var input = $(this).val().split(\',\').join("");
-//            $(this).val(input.replace(/(\d)(?=(\d{3})+(?!\d))/g, \'$1,\'));
-            // skip for arrow keys
-            if(event.which >= 37 && event.which <= 40) return;
-            // format number
-            $(this).val(function(index, value) {
+        function separate(obj) {
+            obj.val(function(index, value) {
                 return value
                     .replace(/\D/g, "")
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             });
-        })
-        ','jquery');
+        }
+        $(document).ready(function(){
+            separate($("#amount"));
+        });
+        $("#amount").keyup(function(){
+            if(event.which >= 37 && event.which <= 40) return;
+            separate($(this));
+        });','jquery');
+
         return Theme::view('sep.pay',['request'=>$request]);
     }
 
